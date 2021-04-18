@@ -9,20 +9,26 @@
 </head>
 <body>
     <H1>Number of Steps to Hee Haw</H1>
-    <form onsubmit="heeHaw()">
+    <form onsubmit="return false">
         <label for="NumHeeHaw">Enter a number</label>
-        <input type="text" id="NumHeeHaw">
-        <span style="color=darkred, display=none" id="err-haw">
+        <input type="text" id="NumHeeHaw"><br>
+        <span style="color:darkred; display:none;" id="err-haw">
             Positive integer is required
         </span>
+        <br>
+        <button onclick="heeHaw()">Submit</button>
     </form>
+    <p id="heeHaw"></p>
     <script>
         function heeHaw() {
             let amount = document.getElementById("NumHeeHaw").value;
-            if (amount < 1) {
+            let heeHaw = document.getElementById("heeHaw");
+            heeHaw.innerText = "";
+            if (amount <= 0) {
                 document.getElementById("err-haw").style.display = "inline";
             }
             else {
+                document.getElementById("err-haw").style.display = "none";
                 for (let i = 1; i <= amount; i++) {
                     if (i % 3 === 0 && i % 5 === 0) {
                         heeHaw.innerText += ("Hee Haw!\r\n");
